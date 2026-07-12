@@ -138,6 +138,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .section { padding: 120px 0; position: relative; }
 .section-dark { background: var(--bg-alt); }
 #faq { border-top: 1px solid var(--border); }
+#contacto { border-top: 1px solid var(--border); }
 .section-head { margin-bottom: 72px; }
 .section-head.center { text-align: center; }
 .section-head h2 {
