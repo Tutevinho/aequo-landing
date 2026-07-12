@@ -18,11 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .from('.hero-title', { y: 50, opacity: 0, duration: 1 }, '-=0.8')
     .from('.hero-title .text-green', { scale: 0.85, opacity: 0, duration: 0.7 }, '-=0.4')
     .from('.hero-desc', { y: 20, opacity: 0, duration: 0.6 }, '-=0.3')
-    .from('.hero-actions a', { y: 15, opacity: 0, duration: 0.5, stagger: 0.1 }, '-=0.3')
-    .from('.hero-logos', { y: 20, opacity: 0, duration: 0.6 }, '-=0.3');
-
-  /* ── Logos scroll ── */
-  gsap.to('.hero-logos-track', { xPercent: -50, duration: 20, repeat: -1, ease: 'none' });
+    .from('.hero-actions a', { y: 15, opacity: 0, duration: 0.5, stagger: 0.1 }, '-=0.3');
 
   /* ── Navbar ── */
   const navbar = document.getElementById('navbar');
@@ -58,13 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  /* ── Stats stagger ── */
-  const statsTl = gsap.timeline({
-    scrollTrigger: { trigger: '.stats-grid', start: 'top 80%' },
-    defaults: { ease: 'power3.out' },
-  });
-  statsTl.from('.stat-card', { y: 40, opacity: 0, duration: 0.5, stagger: 0.08 });
-
   /* ── Features stagger ── */
   gsap.utils.toArray('.feature').forEach((card, i) => {
     const dir = i % 2 === 0 ? -20 : 20;
@@ -94,29 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
     gsap.to(step, {
       x: 0, opacity: 1, duration: 0.7, ease: 'power4.out',
       scrollTrigger: { trigger: step, start: 'top 88%' },
-    });
-  });
-
-  /* ── Testimonials stagger ── */
-  gsap.utils.toArray('.testimonial').forEach((card, i) => {
-    const dy = 30 + i * 10;
-    gsap.set(card, { y: dy, opacity: 0 });
-    gsap.to(card, {
-      y: 0, opacity: 1, duration: 0.6, ease: 'power4.out',
-      scrollTrigger: { trigger: card, start: 'top 88%' },
-    });
-  });
-
-  /* ── Testimonial card tilt ── */
-  document.querySelectorAll('.testimonial').forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width - 0.5;
-      const y = (e.clientY - rect.top) / rect.height - 0.5;
-      gsap.to(card, { rotationX: y * -3, rotationY: x * 3, transformPerspective: 800, duration: 0.4, ease: 'power2.out' });
-    });
-    card.addEventListener('mouseleave', () => {
-      gsap.to(card, { rotationX: 0, rotationY: 0, duration: 0.4, ease: 'power2.out' });
     });
   });
 
