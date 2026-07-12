@@ -13,16 +13,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ── Hero entrance ── */
   const heroTl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+  gsap.set('.hero-circle', { scale: 0.6, opacity: 0 });
+  gsap.set('.hero-title', { y: 50, opacity: 0 });
+  gsap.set('.hero-title .text-green', { scale: 0.85, opacity: 0 });
+  gsap.set('.hero-desc', { y: 20, opacity: 0 });
+  gsap.set('.hero-actions a', { y: 15, opacity: 0 });
   heroTl
-    .from('.hero-circle', { scale: 0.6, opacity: 0, duration: 1.4 })
-    .from('.hero-title', { y: 50, opacity: 0, duration: 1 }, '-=0.8')
-    .from('.hero-title .text-green', { scale: 0.85, opacity: 0, duration: 0.7 }, '-=0.4')
-    .from('.hero-desc', { y: 20, opacity: 0, duration: 0.6 }, '-=0.3')
-    .from('.hero-actions a', { y: 15, opacity: 0, duration: 0.5, stagger: 0.1 }, '-=0.3');
+    .to('.hero-circle', { scale: 1, opacity: 1, duration: 1.4 })
+    .to('.hero-title', { y: 0, opacity: 1, duration: 1 }, '-=0.8')
+    .to('.hero-title .text-green', { scale: 1, opacity: 1, duration: 0.7 }, '-=0.4')
+    .to('.hero-desc', { y: 0, opacity: 1, duration: 0.6 }, '-=0.3')
+    .to('.hero-actions a', { y: 0, opacity: 1, duration: 0.5, stagger: 0.1 }, '-=0.3');
 
   /* ── Navbar ── */
   const navbar = document.getElementById('navbar');
-  gsap.from(navbar, { y: -30, opacity: 0, duration: 0.6, ease: 'power3.out' });
+  gsap.set(navbar, { y: -30, opacity: 0 });
+  gsap.to(navbar, { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' });
   ScrollTrigger.create({
     start: 'top -60px',
     onUpdate: (self) => navbar.classList.toggle('scrolled', self.progress > 0),
@@ -97,19 +103,26 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ── Trust stagger ── */
-  gsap.from('.trust-item', {
-    y: 15, opacity: 0, duration: 0.4, stagger: 0.05, ease: 'power3.out',
-    scrollTrigger: { trigger: '.trust-bar', start: 'top 85%' },
+  gsap.utils.toArray('.trust-item').forEach(el => {
+    gsap.set(el, { y: 15, opacity: 0 });
+    gsap.to(el, {
+      y: 0, opacity: 1, duration: 0.4, ease: 'power3.out',
+      scrollTrigger: { trigger: '.trust-bar', start: 'top 85%' },
+    });
   });
 
   /* ── CTA reveal ── */
-  gsap.from('.cta-box', {
-    y: 50, opacity: 0, duration: 0.8, ease: 'power4.out',
+  gsap.set('.cta-box', { y: 50, opacity: 0 });
+  gsap.to('.cta-box', {
+    y: 0, opacity: 1, duration: 0.8, ease: 'power4.out',
     scrollTrigger: { trigger: '.cta-box', start: 'top 80%' },
   });
-  gsap.from('.cta-form .input-group', {
-    y: 20, opacity: 0, duration: 0.5, stagger: 0.06, ease: 'power3.out',
-    scrollTrigger: { trigger: '.cta-box', start: 'top 75%' },
+  gsap.utils.toArray('.cta-form .input-group').forEach((el, i) => {
+    gsap.set(el, { y: 20, opacity: 0 });
+    gsap.to(el, {
+      y: 0, opacity: 1, duration: 0.5, ease: 'power3.out',
+      scrollTrigger: { trigger: '.cta-box', start: 'top 75%' },
+    });
   });
 
   /* ── Floating CTA ── */
