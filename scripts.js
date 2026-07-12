@@ -102,14 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ── Trust stagger ── */
-  gsap.utils.toArray('.trust-item').forEach(el => {
-    gsap.set(el, { y: 15, opacity: 0 });
-    gsap.to(el, {
-      y: 0, opacity: 1, duration: 0.4, ease: 'power3.out',
-      scrollTrigger: { trigger: '.trust-bar', start: 'top 85%' },
-    });
-  });
+  /* ── Trust bar ── */
 
   /* ── CTA reveal ── */
   gsap.set('.cta-box', { y: 50, opacity: 0 });
@@ -124,18 +117,6 @@ document.addEventListener('DOMContentLoaded', () => {
       scrollTrigger: { trigger: '.cta-box', start: 'top 75%' },
     });
   });
-
-  /* ── Floating CTA ── */
-  const fab = document.getElementById('fab');
-  if (fab) {
-    ScrollTrigger.create({
-      start: 'top 300px',
-      onUpdate: (self) => fab.classList.toggle('visible', self.progress > 0 && window.innerWidth < 600),
-    });
-    window.addEventListener('resize', () => {
-      if (window.innerWidth >= 600) fab.classList.remove('visible');
-    });
-  }
 
   /* ── Smooth scroll nav links ── */
   document.querySelectorAll('a[href^="#"]').forEach(a => {

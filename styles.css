@@ -132,12 +132,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   border: none; cursor: pointer;
 }
 .btn-primary:hover { background: #2ecc71; transform: translateY(-2px); box-shadow: 0 12px 32px rgba(39,174,96,0.3); }
-.btn-ghost {
-  display: inline-flex; color: var(--text-dim); text-decoration: none;
-  font-size: 0.9rem; font-weight: 500; padding: 14px 24px;
-  transition: color 0.3s; align-items: center; gap: 6px;
-}
-.btn-ghost:hover { color: var(--text); }
 .btn-full { width: 100%; justify-content: center; padding: 16px; }
 
 /* ── Section ── */
@@ -330,21 +324,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .footer-bottom a { color: var(--text-dim); text-decoration: none; }
 .footer-bottom a:hover { color: var(--green); }
 
-/* ── Floating CTA ── */
-.fab {
-  position: fixed; bottom: 28px; right: 28px; z-index: 99;
-  opacity: 0; transform: translateY(20px); pointer-events: none;
-  transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
-}
-.fab.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
-.fab a {
-  display: flex; align-items: center; gap: 6px;
-  background: var(--green); color: #000; padding: 14px 24px;
-  border-radius: 30px; text-decoration: none; font-size: 0.85rem;
-  font-weight: 600; box-shadow: 0 4px 24px rgba(39,174,96,0.35);
-  transition: all 0.3s;
-}
-.fab a:hover { background: #2ecc71; box-shadow: 0 8px 32px rgba(39,174,96,0.45); transform: translateY(-2px); }
 
 /* ── Responsive ── */
 @media (max-width: 860px) {
