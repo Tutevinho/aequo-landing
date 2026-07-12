@@ -63,10 +63,9 @@
 <main id="main">
 
 <section class="hero" id="hero">
-  <canvas id="heroCanvas" role="presentation"></canvas>
+  <div class="hero-circle" aria-hidden="true"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="hero-badge">Compliance tecnológico</div>
     <h1 class="hero-title">
       Cumplimiento normativo.<br>
       <span class="text-green">Sin complicaciones.</span>
@@ -79,18 +78,9 @@
       <a href="#soluciones" class="btn-ghost">Ver soluciones →</a>
     </div>
   </div>
-  <div class="hero-rings" aria-hidden="true">
-    <div class="hr hr1"></div>
-    <div class="hr hr2"></div>
-    <div class="hr hr3"></div>
-  </div>
-
-</section>
-
-<section class="logos" aria-label="Empresas que confían">
-  <div class="logos-inner container">
-    <span class="logos-label">Usado por equipos de</span>
-    <div class="logos-track">
+  <div class="hero-logos" aria-label="Empresas que confían">
+    <span class="hero-logos-label">Usado por</span>
+    <div class="hero-logos-track">
       <span>TechCorp</span>
       <span>InnovaLegal</span>
       <span>DataSecure</span>
@@ -396,7 +386,6 @@
   <a href="#contacto" aria-label="Solicitar demo">Demo</a>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <script src="scripts.js" defer></script>

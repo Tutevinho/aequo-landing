@@ -1,56 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
   gsap.registerPlugin(ScrollTrigger);
 
-  /* ── Three.js hero particles ── */
-  const canvas = document.getElementById('heroCanvas');
-  if (canvas) {
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  /* ── Hero parallax ── */
+  gsap.to('.hero-circle', {
+    y: -120, scale: 1.15, ease: 'none',
+    scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1 },
+  });
+  gsap.to('.hero-content', {
+    y: 80, opacity: 0.4, ease: 'none',
+    scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1 },
+  });
 
-    const count = 1500;
-    const pos = new Float32Array(count * 3);
-    const speeds = [];
-    for (let i = 0; i < count; i++) {
-      pos[i*3] = (Math.random() - 0.5) * 20;
-      pos[i*3+1] = (Math.random() - 0.5) * 16;
-      pos[i*3+2] = (Math.random() - 0.5) * 16;
-      speeds.push(Math.random() * 0.3 + 0.05);
-    }
-    const geo = new THREE.BufferGeometry();
-    geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-    const mat = new THREE.PointsMaterial({
-      color: 0x27ae60, size: 0.025,
-      transparent: true, opacity: 0.4,
-      blending: THREE.AdditiveBlending, sizeAttenuation: true,
-    });
-    const pts = new THREE.Points(geo, mat);
-    scene.add(pts);
-    camera.position.z = 8;
+  /* ── Hero entrance ── */
+  const heroTl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+  heroTl
+    .from('.hero-circle', { scale: 0.6, opacity: 0, duration: 1.4 })
+    .from('.hero-title', { y: 50, opacity: 0, duration: 1 }, '-=0.8')
+    .from('.hero-title .text-green', { scale: 0.85, opacity: 0, duration: 0.7 }, '-=0.4')
+    .from('.hero-desc', { y: 20, opacity: 0, duration: 0.6 }, '-=0.3')
+    .from('.hero-actions a', { y: 15, opacity: 0, duration: 0.5, stagger: 0.1 }, '-=0.3')
+    .from('.hero-logos', { y: 20, opacity: 0, duration: 0.6 }, '-=0.3');
 
-    function anim() {
-      const p = pts.geometry.attributes.position.array;
-      for (let i = 0; i < count; i++) {
-        p[i*3+1] -= speeds[i] * 0.003;
-        p[i*3] += Math.sin(Date.now() * 0.0003 * speeds[i]) * 0.002;
-        if (p[i*3+1] < -8) { p[i*3+1] = 8; p[i*3] = (Math.random() - 0.5) * 20; }
-      }
-      pts.geometry.attributes.position.needsUpdate = true;
-      renderer.render(scene, camera);
-      requestAnimationFrame(anim);
-    }
-    anim();
+  /* ── Logos scroll ── */
+  gsap.to('.hero-logos-track', { xPercent: -50, duration: 20, repeat: -1, ease: 'none' });
 
-    window.addEventListener('resize', () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    }, { passive: true });
-  }
-
-  /* ── Navbar parallax reveal + scroll ── */
+  /* ── Navbar ── */
   const navbar = document.getElementById('navbar');
   gsap.from(navbar, { y: -30, opacity: 0, duration: 0.6, ease: 'power3.out' });
   ScrollTrigger.create({
@@ -58,71 +32,38 @@ document.addEventListener('DOMContentLoaded', () => {
     onUpdate: (self) => navbar.classList.toggle('scrolled', self.progress > 0),
   });
 
-  /* ── Hero entrance (staggered timeline) ── */
-  const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-  heroTl
-    .from('.hero-badge',  { y: 25, opacity: 0, duration: 0.5 })
-    .from('.hero-title',   { y: 40, opacity: 0, duration: 0.8 }, '-=0.2')
-    .from('.hero-title .text-green', { scale: 0.8, opacity: 0, duration: 0.6 }, '-=0.3')
-    .from('.hero-desc',    { y: 25, opacity: 0, duration: 0.6 }, '-=0.3')
-    .from('.hero-actions a', { y: 20, opacity: 0, duration: 0.5, stagger: 0.1 }, '-=0.3');
-
-  /* ── Hero rings parallax on scroll ── */
-  gsap.from('.hr', { scale: 0.7, opacity: 0, duration: 1.4, delay: 0.2, ease: 'power4.out' });
-  gsap.utils.toArray('.hr').forEach((ring, i) => {
-    const speed = 0.05 * (i + 1);
-    gsap.to(ring, {
-      y: () => window.innerHeight * speed,
-      ease: 'none',
-      scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true },
+  /* ── Section head reveals ── */
+  gsap.utils.toArray('.section-head').forEach(el => {
+    const h2 = el.querySelector('h2');
+    const label = el.querySelector('.label');
+    if (!h2) return;
+    gsap.set(h2, { y: 30, opacity: 0 });
+    gsap.to(h2, {
+      y: 0, opacity: 1, duration: 0.9, ease: 'power4.out',
+      scrollTrigger: { trigger: el, start: 'top 85%' },
     });
+    h2.querySelectorAll('.text-green').forEach(span => {
+      gsap.set(span, { scale: 0.85, opacity: 0 });
+      gsap.to(span, {
+        scale: 1, opacity: 1, duration: 0.6, ease: 'back.out(1.7)',
+        scrollTrigger: { trigger: el, start: 'top 82%' },
+      });
+    });
+    if (label) {
+      gsap.set(label, { y: 10, opacity: 0 });
+      gsap.to(label, {
+        y: 0, opacity: 1, duration: 0.5, ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 90%' },
+      });
+    }
   });
-
-  /* ── Hero content parallax ── */
-  gsap.to('.hero-content', {
-    y: 60, opacity: 0.6, ease: 'none',
-    scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1 },
-  });
-  gsap.to('#heroCanvas', {
-    y: 40, ease: 'none',
-    scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1 },
-  });
-
-  /* ── Logos infinite scroll ── */
-  gsap.to('.logos-track', { xPercent: -50, duration: 20, repeat: -1, ease: 'none' });
 
   /* ── Stats stagger ── */
   const statsTl = gsap.timeline({
     scrollTrigger: { trigger: '.stats-grid', start: 'top 80%' },
     defaults: { ease: 'power3.out' },
   });
-  statsTl
-    .from('.stat-card', { y: 40, opacity: 0, duration: 0.5, stagger: 0.08 });
-
-  /* ── Counters (blank until real data) ── */
-
-  /* ── Section head reveals ── */
-  gsap.utils.toArray('.section-head').forEach(el => {
-    const h2 = el.querySelector('h2');
-    const label = el.querySelector('.label');
-    if (!h2) return;
-    gsap.from(h2, {
-      y: 40, opacity: 0, duration: 0.9, ease: 'power4.out',
-      scrollTrigger: { trigger: el, start: 'top 85%' },
-    });
-    h2.querySelectorAll('.text-green').forEach(span => {
-      gsap.from(span, {
-        scale: 0.85, opacity: 0, duration: 0.6, ease: 'back.out(1.7)',
-        scrollTrigger: { trigger: el, start: 'top 82%' },
-      });
-    });
-    if (label) {
-      gsap.from(label, {
-        y: 12, opacity: 0, duration: 0.5, ease: 'power3.out',
-        scrollTrigger: { trigger: el, start: 'top 90%' },
-      });
-    }
-  });
+  statsTl.from('.stat-card', { y: 40, opacity: 0, duration: 0.5, stagger: 0.08 });
 
   /* ── Features stagger ── */
   gsap.utils.toArray('.feature').forEach((card, i) => {
