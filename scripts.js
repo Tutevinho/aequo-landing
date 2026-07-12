@@ -1,14 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
   gsap.registerPlugin(ScrollTrigger);
 
-  /* ── Lenis smooth scroll (faster) ── */
-  const lenis = new Lenis({ duration: 0.8, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
-  lenis.on('scroll', ScrollTrigger.update);
-  gsap.ticker.add((t) => lenis.raf(t * 1000));
-  gsap.ticker.lagSmoothing(0);
-
   /* ── Three.js hero particles ── */
   const canvas = document.getElementById('heroCanvas');
+  if (!canvas) return;
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
   const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
@@ -86,10 +81,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const heroTL = gsap.timeline({ defaults: { ease: 'power3.out', duration: 1 } });
   heroTL
     .from('.hero-badge', { y: 30, opacity: 0, duration: 0.7 })
-    .from('.line-1', { y: 50, opacity: 0 }, '-=0.3')
-    .from('.line-2', { y: 50, opacity: 0 }, '-=0.4')
-    .from('.hero-desc', { y: 30, opacity: 0 }, '-=0.3')
-    .from('.hero-actions a', { y: 20, opacity: 0, stagger: 0.12 }, '-=0.3')
+    .from('.line-1', { y: 40, opacity: 0 }, '-=0.3')
+    .from('.line-2', { y: 40, opacity: 0 }, '-=0.4')
+    .from('.hero-desc', { y: 25, opacity: 0 }, '-=0.3')
+    .from('.hero-actions a', { y: 20, opacity: 0, stagger: 0.1 }, '-=0.3')
     .from('.ring-wrap', { scale: 0.8, opacity: 0, duration: 1.2 }, '-=0.8');
 
   /* ── Section header reveal ── */
@@ -113,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
     scrollTrigger: { trigger: '.intro-grid', start: 'top 80%' }
   });
   gsap.from('.intro-card', {
-    x: -30, opacity: 0, duration: 0.6, stagger: 0.12,
+    x: -20, opacity: 0, duration: 0.6, stagger: 0.1,
     ease: 'power3.out',
     scrollTrigger: { trigger: '.intro-cards', start: 'top 85%' }
   });
@@ -139,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ── Service cards ── */
   gsap.from('.service-card', {
-    y: 50, opacity: 0, duration: 0.7, stagger: 0.12,
+    y: 40, opacity: 0, duration: 0.7, stagger: 0.1,
     ease: 'power3.out',
     scrollTrigger: { trigger: '.services-grid', start: 'top 80%' }
   });
@@ -150,19 +145,24 @@ document.addEventListener('DOMContentLoaded', () => {
       const x = (e.clientX - rect.left) / rect.width - 0.5;
       const y = (e.clientY - rect.top) / rect.height - 0.5;
       gsap.to(card, {
-        rotationY: x * 10, rotationX: -y * 10,
-        duration: 0.5, ease: 'power2.out',
+        rotationY: x * 8, rotationX: -y * 8,
+        duration: 0.4, ease: 'power2.out',
         transformPerspective: 1000,
         scale: 1.02,
       });
-      gsap.to(card.querySelector('.card-bg'), { opacity: 1, duration: 0.3 });
       card.style.setProperty('--mx', `${e.clientX - rect.left}px`);
       card.style.setProperty('--my', `${e.clientY - rect.top}px`);
     });
     card.addEventListener('mouseleave', () => {
-      gsap.to(card, { rotationY: 0, rotationX: 0, scale: 1, duration: 0.5, ease: 'power2.out' });
-      gsap.to(card.querySelector('.card-bg'), { opacity: 0, duration: 0.3 });
+      gsap.to(card, { rotationY: 0, rotationX: 0, scale: 1, duration: 0.4, ease: 'power2.out' });
     });
+  });
+
+  /* ── Trusted stagger ── */
+  gsap.from('.trusted-item', {
+    y: 20, opacity: 0, duration: 0.5, stagger: 0.06,
+    ease: 'power3.out',
+    scrollTrigger: { trigger: '.trusted-grid', start: 'top 85%' }
   });
 
   /* ── Steps stagger ── */
@@ -184,30 +184,6 @@ document.addEventListener('DOMContentLoaded', () => {
     scrollTrigger: { trigger: '.cta-grid', start: 'top 80%' }
   });
 
-  /* ── Parallax rings on scroll ── */
-  gsap.to('.ring-wrap', {
-    y: -60, scale: 0.9, opacity: 0.6,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '.hero',
-      start: 'top top',
-      end: 'bottom top',
-      scrub: 1,
-    }
-  });
-
-  /* ── Hero title parallax ── */
-  gsap.to('.hero-title', {
-    y: -40,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '.hero',
-      start: 'top top',
-      end: 'bottom top',
-      scrub: 0.8,
-    }
-  });
-
   /* ── Marquee ── */
   gsap.to('.marquee-track', {
     xPercent: -50,
@@ -224,7 +200,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const target = document.querySelector(href);
       if (target) {
         e.preventDefault();
-        lenis.scrollTo(target, { offset: -60 });
+        const top = target.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top, behavior: 'smooth' });
       }
     });
   });
