@@ -124,12 +124,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  /* ── Features stagger with alternating directions ── */
+  /* ── Features stagger ── */
   gsap.utils.toArray('.feature').forEach((card, i) => {
-    const fromX = i % 2 === 0 ? -30 : 30;
-    gsap.from(card, {
-      x: fromX, y: 30, opacity: 0, duration: 0.7, ease: 'power4.out',
-      scrollTrigger: { trigger: card, start: 'top 85%' },
+    const dir = i % 2 === 0 ? -20 : 20;
+    gsap.set(card, { x: dir, y: 20, opacity: 0 });
+    gsap.to(card, {
+      x: 0, y: 0, opacity: 1, duration: 0.7, ease: 'power4.out',
+      scrollTrigger: { trigger: card, start: 'top 88%' },
     });
   });
 
@@ -147,19 +148,21 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ── Steps stagger ── */
-  gsap.utils.toArray('.step').forEach((step, i) => {
-    gsap.from(step, {
-      x: -30, opacity: 0, duration: 0.7, ease: 'power4.out',
-      scrollTrigger: { trigger: step, start: 'top 85%' },
+  gsap.utils.toArray('.step').forEach((step) => {
+    gsap.set(step, { x: -20, opacity: 0 });
+    gsap.to(step, {
+      x: 0, opacity: 1, duration: 0.7, ease: 'power4.out',
+      scrollTrigger: { trigger: step, start: 'top 88%' },
     });
   });
 
   /* ── Testimonials stagger ── */
   gsap.utils.toArray('.testimonial').forEach((card, i) => {
-    const fromY = 30 + i * 10;
-    gsap.from(card, {
-      y: fromY, opacity: 0, duration: 0.6, ease: 'power4.out',
-      scrollTrigger: { trigger: card, start: 'top 85%' },
+    const dy = 30 + i * 10;
+    gsap.set(card, { y: dy, opacity: 0 });
+    gsap.to(card, {
+      y: 0, opacity: 1, duration: 0.6, ease: 'power4.out',
+      scrollTrigger: { trigger: card, start: 'top 88%' },
     });
   });
 
@@ -176,11 +179,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ── FAQ stagger (alternating) ── */
+  /* ── FAQ stagger ── */
   gsap.utils.toArray('.faq-item').forEach((item, i) => {
-    gsap.from(item, {
-      x: i % 2 === 0 ? -20 : 20, opacity: 0, duration: 0.5, ease: 'power4.out',
-      scrollTrigger: { trigger: item, start: 'top 85%' },
+    const dx = i % 2 === 0 ? -20 : 20;
+    gsap.set(item, { x: dx, opacity: 0 });
+    gsap.to(item, {
+      x: 0, opacity: 1, duration: 0.5, ease: 'power4.out',
+      scrollTrigger: { trigger: item, start: 'top 88%' },
     });
   });
 

@@ -213,8 +213,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 /* ── Features (service cards) ── */
 .features {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;
 }
+.feature-lg { grid-column: span 2; }
 .feature {
   background: var(--surface); border: 1px solid rgba(255,255,255,0.08);
   border-radius: 12px; padding: 40px 32px;
@@ -445,6 +446,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .hero-rings { width: 500px; height: 500px; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .features { grid-template-columns: 1fr; }
+  .feature-lg { grid-column: span 1; }
   .testimonials { grid-template-columns: 1fr; }
   .cta-box { grid-template-columns: 1fr; gap: 40px; padding: 40px; }
   .footer-inner { grid-template-columns: 1fr; gap: 40px; }
