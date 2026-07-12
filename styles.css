@@ -1,12 +1,12 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --bg: #0a0e1a;
-  --bg-alt: #0f1424;
-  --surface: #151d30;
+  --bg: #1a252f;
+  --bg-alt: #1e2a35;
+  --surface: #24323f;
   --border: rgba(255,255,255,0.06);
-  --text: #e4e8ee;
-  --text-dim: #8595a8;
+  --text: #e8edf0;
+  --text-dim: #8a9aa8;
   --green: #27ae60;
   --green-dim: rgba(39,174,96,0.08);
   --green-border: rgba(39,174,96,0.2);
@@ -41,7 +41,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   padding: 24px 0; transition: all 0.4s;
 }
 .navbar.scrolled {
-  background: rgba(10,14,26,0.92);
+  background: rgba(26,37,47,0.92);
   backdrop-filter: blur(20px);
   padding: 14px 0;
   border-bottom: 1px solid var(--border);
@@ -93,7 +93,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   background:
     radial-gradient(ellipse 600px 400px at 30% 30%, rgba(39,174,96,0.06) 0%, transparent 70%),
     radial-gradient(ellipse 500px 500px at 70% 60%, rgba(39,174,96,0.03) 0%, transparent 70%),
-    linear-gradient(180deg, rgba(10,14,26,0.3) 0%, var(--bg) 100%);
+    linear-gradient(180deg, rgba(26,37,47,0.3) 0%, var(--bg) 100%);
 }
 .hero-content {
   position: relative; z-index: 2; text-align: center; max-width: 780px;
