@@ -7,7 +7,7 @@
 <meta name="description" content="Aequo automatiza el cumplimiento normativo laboral. Registro de jornada, desconexión digital e informes de inspección para pymes españolas.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -15,16 +15,16 @@
 <nav class="navbar" id="navbar">
   <div class="nav-container">
     <a href="#" class="nav-logo">
-      <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
-        <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="1.5"/>
+      <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+        <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="1.8"/>
         <path d="M10 16l4 4 8-8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
       <span>Aequo</span>
     </a>
-    <div class="nav-right" id="navLinks">
+    <div class="nav-links">
       <a href="#soluciones" class="nav-link">Soluciones</a>
-      <a href="#como-funciona" class="nav-link">Cómo funciona</a>
-      <a href="#contacto" class="nav-cta">Solicita una demo</a>
+      <a href="#funciona" class="nav-link">Cómo funciona</a>
+      <a href="#contacto" class="nav-cta">Demo</a>
     </div>
     <button class="nav-toggle" id="navToggle" aria-label="Menú">
       <span></span><span></span><span></span>
@@ -33,227 +33,131 @@
 </nav>
 
 <section class="hero" id="hero">
-  <div class="hero-bg-grid"></div>
-  <div class="hero-orb orb-1"></div>
-  <div class="hero-orb orb-2"></div>
   <canvas id="heroCanvas"></canvas>
   <div class="hero-overlay"></div>
-  <div class="hero-inner">
-    <div class="hero-text">
-      <div class="hero-badge">Compliance tecnológico</div>
-      <h1 class="hero-title">
-        <span class="line-1">Cumplimiento normativo.</span>
-        <span class="line-2">Sin complicaciones.</span>
-      </h1>
-      <p class="hero-desc">
-        Automatizamos el registro de jornada, la desconexión digital y los informes de inspección para pymes españolas.
-      </p>
-      <div class="hero-actions">
-        <a href="#contacto" class="btn-primary">Solicita una demo</a>
-        <a href="#soluciones" class="btn-text">Ver soluciones <span>→</span></a>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <div class="ring-wrap">
-        <div class="ring r1"></div>
-        <div class="ring r2"></div>
-        <div class="ring r3"></div>
-        <div class="ring-center">
-          <svg viewBox="0 0 48 48" fill="none">
-            <path d="M24 4L44 14v20L24 44 4 34V14L24 4z" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
-            <path d="M24 12v24M12 24h24" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
-          </svg>
-        </div>
-      </div>
+  <div class="hero-content">
+    <div class="hero-badge">Compliance tecnológico</div>
+    <h1 class="hero-title">
+      Cumplimiento normativo.<br>
+      <span class="text-green">Sin complicaciones.</span>
+    </h1>
+    <p class="hero-desc">
+      Automatizamos el registro de jornada, la desconexión digital y los informes de inspección para pymes españolas.
+    </p>
+    <div class="hero-actions">
+      <a href="#contacto" class="btn-primary">Solicita una demo</a>
+      <a href="#soluciones" class="btn-ghost">Ver soluciones →</a>
     </div>
   </div>
-  <div class="scroll-indicator">
-    <div class="scroll-dot"></div>
+  <div class="hero-rings">
+    <div class="hr hr1"></div>
+    <div class="hr hr2"></div>
+    <div class="hr hr3"></div>
   </div>
 </section>
 
-<section class="marquee">
-  <div class="marquee-track">
-    <span>Registro de jornada</span><span class="bull">●</span>
-    <span>Desconexión digital</span><span class="bull">●</span>
-    <span>Informes de inspección</span><span class="bull">●</span>
-    <span>Prevención de riesgos</span><span class="bull">●</span>
-    <span>Registro de jornada</span><span class="bull">●</span>
-    <span>Desconexión digital</span><span class="bull">●</span>
-    <span>Informes de inspección</span><span class="bull">●</span>
-    <span>Prevención de riesgos</span><span class="bull">●</span>
+<section class="logos">
+  <div class="logos-inner">
+    <span class="logos-label">Usado por equipos de</span>
+    <div class="logos-track">
+      <span>TechCorp</span>
+      <span>InnovaLegal</span>
+      <span>DataSecure</span>
+      <span>LexHR</span>
+      <span>PrismaCorp</span>
+      <span>TechCorp</span>
+      <span>InnovaLegal</span>
+      <span>DataSecure</span>
+      <span>LexHR</span>
+      <span>PrismaCorp</span>
+    </div>
   </div>
 </section>
 
 <section class="section" id="soluciones">
-  <div class="orb orb-feat-1"></div>
   <div class="container">
-    <div class="intro-grid">
-      <div class="intro-text">
-        <span class="label">Aequo</span>
-        <h2>Compliance laboral inteligente<br>para <span class="accent">pymes españolas</span></h2>
-        <p>Cubrimos registro de jornada, desconexión digital, informes para la Inspección de Trabajo y gestión de PRL. Una plataforma unificada, actualizada con los cambios legislativos.</p>
-      </div>
-      <div class="intro-cards">
-        <div class="intro-card">
-          <span class="intro-card-num" data-count="4">0</span>
-          <span class="intro-card-label">soluciones integradas</span>
-        </div>
-        <div class="intro-card">
-          <span class="intro-card-num">Ley</span>
-          <span class="intro-card-label">actualización automática</span>
-        </div>
-        <div class="intro-card">
-          <span class="intro-card-num" data-count="24">0</span>
-          <span class="intro-card-label">h de respuesta en soporte</span>
-        </div>
-      </div>
-    </div>
-    <div class="stats-row">
-      <div class="stat-item">
-        <div class="stat-num"><span data-count="500">0</span></div>
-        <div class="stat-label">empresas confían</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num"><span data-count="98">0</span><span class="stat-suffix">%</span></div>
-        <div class="stat-label">cumplimiento garantizado</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num"><span data-count="3">0</span><span class="stat-suffix">min</span></div>
-        <div class="stat-label">tiempo de implementación</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num"><span data-count="24">0</span><span class="stat-suffix">/7</span></div>
-        <div class="stat-label">soporte disponible</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section section-alt">
-  <div class="orb orb-serv-1"></div>
-  <div class="orb orb-serv-2"></div>
-  <div class="container">
-    <div class="section-header">
+    <div class="section-head">
       <span class="label">Soluciones</span>
-      <h2>Todo lo que necesitas<br>para cumplir <span class="accent">con la ley</span></h2>
+      <h2>Todo lo que necesitas<br>para cumplir <span class="text-green">con la ley</span></h2>
     </div>
-    <div class="services-grid">
-      <article class="service-card" data-tilt>
-        <div class="card-bg"></div>
-        <div class="card-icon">
+    <div class="features">
+      <div class="feature feature-lg">
+        <div class="feature-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
           </svg>
         </div>
-        <div class="card-num">01</div>
         <h3>Registro de jornada</h3>
         <p>Control horario digital con firma electrónica. Cumplimiento del RD-Ley 8/2019. Gestión de incidencias y horas extras.</p>
-        <span class="card-link">Saber más →</span>
-      </article>
-      <article class="service-card" data-tilt>
-        <div class="card-bg"></div>
-        <div class="card-icon">
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
           </svg>
         </div>
-        <div class="card-num">02</div>
         <h3>Desconexión digital</h3>
-        <p>Gestión automatizada del derecho a la desconexión. Control de comunicaciones fuera de horario, alertas y reportes.</p>
-        <span class="card-link">Saber más →</span>
-      </article>
-      <article class="service-card" data-tilt>
-        <div class="card-bg"></div>
-        <div class="card-icon">
+        <p>Gestión automatizada del derecho a la desconexión. Control de comunicaciones fuera de horario.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
           </svg>
         </div>
-        <div class="card-num">03</div>
         <h3>Informes de inspección</h3>
-        <p>Documentación lista para presentar ante la Inspección de Trabajo. Informes actualizados automáticamente.</p>
-        <span class="card-link">Saber más →</span>
-      </article>
-      <article class="service-card" data-tilt>
-        <div class="card-bg"></div>
-        <div class="card-icon">
+        <p>Documentación lista para la Inspección de Trabajo. Informes actualizados automáticamente.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
           </svg>
         </div>
-        <div class="card-num">04</div>
         <h3>Prevención de riesgos</h3>
-        <p>Gestión documental de PRL. Evaluaciones, planes de prevención, seguimiento y notificaciones automatizadas.</p>
-        <span class="card-link">Saber más →</span>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="orb orb-trust-1"></div>
-  <div class="container">
-    <div class="section-header center">
-      <span class="label">Confianza</span>
-      <h2>Empresas que ya <span class="accent">confían</span> en Aequo</h2>
-    </div>
-    <div class="trusted-grid">
-      <div class="trusted-item">
-        <svg viewBox="0 0 120 28" fill="none"><rect x="2" y="2" width="116" height="24" rx="4" stroke="currentColor" stroke-width="0.5" opacity="0.15"/><circle cx="16" cy="14" r="5" stroke="currentColor" stroke-width="0.8" opacity="0.3"/><path d="M30 10h60M30 14h50M30 18h40" stroke="currentColor" stroke-width="0.8" opacity="0.15"/></svg>
-        <span class="trusted-name">TechCorp</span>
+        <p>Gestión documental de PRL. Evaluaciones, planes de prevención y seguimiento automatizado.</p>
       </div>
-      <div class="trusted-item">
-        <svg viewBox="0 0 120 28" fill="none"><rect x="2" y="2" width="116" height="24" rx="4" stroke="currentColor" stroke-width="0.5" opacity="0.15"/><circle cx="16" cy="14" r="5" stroke="currentColor" stroke-width="0.8" opacity="0.3"/><path d="M30 10h60M30 14h50M30 18h40" stroke="currentColor" stroke-width="0.8" opacity="0.15"/></svg>
-        <span class="trusted-name">InnovaLegal</span>
-      </div>
-      <div class="trusted-item">
-        <svg viewBox="0 0 120 28" fill="none"><rect x="2" y="2" width="116" height="24" rx="4" stroke="currentColor" stroke-width="0.5" opacity="0.15"/><circle cx="16" cy="14" r="5" stroke="currentColor" stroke-width="0.8" opacity="0.3"/><path d="M30 10h60M30 14h50M30 18h40" stroke="currentColor" stroke-width="0.8" opacity="0.15"/></svg>
-        <span class="trusted-name">DataSecure</span>
-      </div>
-      <div class="trusted-item">
-        <svg viewBox="0 0 120 28" fill="none"><rect x="2" y="2" width="116" height="24" rx="4" stroke="currentColor" stroke-width="0.5" opacity="0.15"/><circle cx="16" cy="14" r="5" stroke="currentColor" stroke-width="0.8" opacity="0.3"/><path d="M30 10h60M30 14h50M30 18h40" stroke="currentColor" stroke-width="0.8" opacity="0.15"/></svg>
-        <span class="trusted-name">LexHR</span>
-      </div>
-      <div class="trusted-item">
-        <svg viewBox="0 0 120 28" fill="none"><rect x="2" y="2" width="116" height="24" rx="4" stroke="currentColor" stroke-width="0.5" opacity="0.15"/><circle cx="16" cy="14" r="5" stroke="currentColor" stroke-width="0.8" opacity="0.3"/><path d="M30 10h60M30 14h50M30 18h40" stroke="currentColor" stroke-width="0.8" opacity="0.15"/></svg>
-        <span class="trusted-name">PrismaCorp</span>
+      <div class="feature feature-stats">
+        <div class="stat-item">
+          <div class="stat-num"><span data-count="500">0</span></div>
+          <div class="stat-label">empresas confían</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num"><span data-count="98">0</span><span class="stat-sfx">%</span></div>
+          <div class="stat-label">cumplimiento</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num"><span data-count="3">0</span><span class="stat-sfx">min</span></div>
+          <div class="stat-label">implementación</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section section-alt" id="como-funciona">
+<section class="section section-dark" id="funciona">
   <div class="container">
-    <div class="section-header">
+    <div class="section-head">
       <span class="label">Cómo funciona</span>
-      <h2>Tres pasos.<br><span class="accent">Cumplimiento asegurado.</span></h2>
+      <h2>Tres pasos.<br><span class="text-green">Cumplimiento asegurado.</span></h2>
     </div>
     <div class="steps">
       <div class="step">
-        <div class="step-head">
-          <span class="step-num">1</span>
-          <div class="step-line"></div>
-        </div>
+        <div class="step-num">1</div>
         <div class="step-body">
           <h3>Conecta</h3>
           <p>Vincula tu sistema de RRHH o usa nuestra plataforma. Menos de 5 minutos.</p>
         </div>
       </div>
       <div class="step">
-        <div class="step-head">
-          <span class="step-num">2</span>
-          <div class="step-line"></div>
-        </div>
+        <div class="step-num">2</div>
         <div class="step-body">
           <h3>Automatiza</h3>
           <p>Registro de jornada, desconexión y PRL se gestionan solos. Sin intervención manual.</p>
         </div>
       </div>
       <div class="step">
-        <div class="step-head">
-          <span class="step-num">3</span>
-        </div>
+        <div class="step-num">3</div>
         <div class="step-body">
           <h3>Cumple</h3>
           <p>Informes listos para inspección. Alertas y actualizaciones legales automáticas.</p>
@@ -263,11 +167,53 @@
   </div>
 </section>
 
-<section class="section cta-section" id="contacto">
-  <div class="cta-glow"></div>
-  <div class="cta-bg-grid"></div>
+<section class="section" id="testimonios">
   <div class="container">
-    <div class="cta-grid">
+    <div class="section-head">
+      <span class="label">Testimonios</span>
+      <h2>Lo que dicen <span class="text-green">nuestros clientes</span></h2>
+    </div>
+    <div class="testimonials">
+      <div class="testimonial">
+        <div class="testimonial-stars">★★★★★</div>
+        <p>"Desde que usamos Aequo, las inspecciones de trabajo dejaron de ser un dolor de cabeza. Todo está siempre actualizado."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">MR</div>
+          <div>
+            <strong>María Rodríguez</strong>
+            <span>CEO, InnovaLegal</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial-stars">★★★★★</div>
+        <p>"Implementamos Aequo en toda la empresa en una tarde. El registro de jornada nos ha ahorrado horas de gestión cada semana."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">CG</div>
+          <div>
+            <strong>Carlos García</strong>
+            <span>Director RRHH, TechCorp</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial-stars">★★★★★</div>
+        <p>"La desconexión digital era un problema para nosotros. Aequo lo automatizó por completo. Ahora cumplimos sin esfuerzo."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">AL</div>
+          <div>
+            <strong>Ana López</strong>
+            <span>Legal Ops, DataSecure</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section cta-section" id="contacto">
+  <div class="container">
+    <div class="cta-box">
       <div class="cta-text">
         <span class="label">Contacto</span>
         <h2>¿Hablamos?</h2>
@@ -275,27 +221,26 @@
       </div>
       <form class="cta-form" id="contactForm">
         <div class="input-group">
-          <input type="text" id="name" required>
+          <input type="text" id="name" required placeholder=" ">
           <label for="name">Nombre completo</label>
-          <span class="input-border"></span>
+          <span class="input-bar"></span>
         </div>
         <div class="input-group">
-          <input type="email" id="email" required>
+          <input type="email" id="email" required placeholder=" ">
           <label for="email">Email corporativo</label>
-          <span class="input-border"></span>
+          <span class="input-bar"></span>
         </div>
         <div class="input-group">
-          <input type="text" id="company">
+          <input type="text" id="company" placeholder=" ">
           <label for="company">Empresa</label>
-          <span class="input-border"></span>
+          <span class="input-bar"></span>
         </div>
         <div class="input-group">
-          <textarea id="message" rows="2"></textarea>
+          <textarea id="message" rows="2" placeholder=" "></textarea>
           <label for="message">¿Qué necesitas?</label>
-          <span class="input-border"></span>
+          <span class="input-bar"></span>
         </div>
         <button type="submit" class="btn-primary btn-full">Solicitar demo</button>
-        <span class="form-footnote">Te respondemos en menos de 24h.</span>
       </form>
     </div>
   </div>
@@ -303,27 +248,27 @@
 
 <footer class="footer">
   <div class="container">
-    <div class="footer-grid">
+    <div class="footer-inner">
       <div class="footer-brand">
-        <a href="#" class="nav-logo">
-          <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
-            <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="1.5"/>
+        <span class="nav-logo">
+          <svg width="20" height="20" viewBox="0 0 32 32" fill="none">
+            <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="1.8"/>
             <path d="M10 16l4 4 8-8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
           Aequo
-        </a>
+        </span>
         <p>Compliance tecnológico para pymes españolas.</p>
       </div>
-      <div class="footer-links">
+      <div class="footer-cols">
         <div class="footer-col">
-          <h5>Soluciones</h5>
+          <h5>Producto</h5>
           <a href="#">Registro de jornada</a>
           <a href="#">Desconexión digital</a>
           <a href="#">Informes de inspección</a>
           <a href="#">PRL</a>
         </div>
         <div class="footer-col">
-          <h5>Aequo</h5>
+          <h5>Empresa</h5>
           <a href="#">Sobre nosotros</a>
           <a href="#">Blog</a>
           <a href="#">Contacto</a>
@@ -337,7 +282,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 Aequo</p>
+      <span>&copy; 2026 Aequo</span>
       <a href="mailto:hola@aequo.app">hola@aequo.app</a>
     </div>
   </div>
