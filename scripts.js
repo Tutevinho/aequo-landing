@@ -63,7 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
   gsap.from('.hero-desc', { y: 20, opacity: 0, duration: 0.6, delay: 0.3 });
   gsap.from('.hero-actions a', { y: 15, opacity: 0, duration: 0.5, stagger: 0.1, delay: 0.45 });
   gsap.from('.hr', { scale: 0.6, opacity: 0, duration: 1.2, delay: 0.3, ease: 'power3.out' });
-
   /* ── Section head reveals ── */
   gsap.utils.toArray('.section-head').forEach(el => {
     gsap.from(el.querySelector('h2'), {
@@ -76,11 +75,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ── Features stagger ── */
-  gsap.from('.feature', {
-    y: 30, opacity: 0, duration: 0.6, stagger: 0.08,
+  /* ── Stats stagger ── */
+  gsap.from('.stat-card', {
+    y: 30, opacity: 0, duration: 0.6, stagger: 0.1,
     ease: 'power3.out',
-    scrollTrigger: { trigger: '.features', start: 'top 80%' }
+    scrollTrigger: { trigger: '.stats-grid', start: 'top 80%' }
   });
 
   /* ── Counters ── */
@@ -89,15 +88,22 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!target) return;
     const obj = { val: 0 };
     gsap.to(obj, {
-      val: target, duration: 1.8, ease: 'power2.out',
-      scrollTrigger: { trigger: el.closest('.feature-stats') || el, start: 'top 85%' },
+      val: target, duration: 2, ease: 'power2.out',
+      scrollTrigger: { trigger: el.closest('.stat-card') || el, start: 'top 85%' },
       onUpdate: () => { el.textContent = Math.floor(obj.val).toLocaleString(); }
     });
   });
 
+  /* ── Features stagger ── */
+  gsap.from('.feature', {
+    y: 30, opacity: 0, duration: 0.6, stagger: 0.08,
+    ease: 'power3.out',
+    scrollTrigger: { trigger: '.features', start: 'top 80%' }
+  });
+
   /* ── Steps stagger ── */
   gsap.from('.step', {
-    y: 20, opacity: 0, duration: 0.6, stagger: 0.12,
+    y: 20, opacity: 0, duration: 0.6, stagger: 0.15,
     ease: 'power3.out',
     scrollTrigger: { trigger: '.steps', start: 'top 80%' }
   });
@@ -203,14 +209,14 @@ document.addEventListener('DOMContentLoaded', () => {
           group.classList.add('error');
           valid = false;
           const label = group.querySelector('label');
-          if (error) error.textContent = label ? `El ${label.textContent.toLowerCase()} es obligatorio` : 'Campo obligatorio';
+          error.textContent = label ? `El ${label.textContent.toLowerCase()} es obligatorio` : 'Campo obligatorio';
         } else if (el.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value)) {
           group.classList.add('error');
           valid = false;
-          if (error) error.textContent = 'Introduce un email válido';
+          error.textContent = 'Introduce un email válido';
         } else {
           group.classList.remove('error');
-          if (error) error.textContent = '';
+          error.textContent = '';
         }
       });
 
@@ -223,11 +229,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const btn = document.getElementById('submitBtn');
       const orig = btn.textContent;
       btn.textContent = '✓ Enviado';
-      btn.style.background = '#27ae60';
       btn.disabled = true;
       setTimeout(() => {
         btn.textContent = orig;
-        btn.style.background = '';
         btn.disabled = false;
         form.querySelectorAll('input, textarea').forEach(el => el.value = '');
         form.querySelectorAll('.input-group').forEach(g => g.classList.remove('focused', 'error'));
