@@ -27,47 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ── Navbar ── */
   const navbar = document.getElementById('navbar');
-  gsap.set(navbar, { y: -30, opacity: 0 });
-  gsap.to(navbar, { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' });
   ScrollTrigger.create({
     start: 'top -60px',
     onUpdate: (self) => navbar.classList.toggle('scrolled', self.progress > 0),
-  });
-
-  /* ── Section head reveals ── */
-  gsap.utils.toArray('.section-head').forEach(el => {
-    const h2 = el.querySelector('h2');
-    const label = el.querySelector('.label');
-    if (!h2) return;
-    gsap.set(h2, { y: 30, opacity: 0 });
-    gsap.to(h2, {
-      y: 0, opacity: 1, duration: 0.9, ease: 'power4.out',
-      scrollTrigger: { trigger: el, start: 'top 85%' },
-    });
-    h2.querySelectorAll('.text-green').forEach(span => {
-      gsap.set(span, { scale: 0.85, opacity: 0 });
-      gsap.to(span, {
-        scale: 1, opacity: 1, duration: 0.6, ease: 'back.out(1.7)',
-        scrollTrigger: { trigger: el, start: 'top 82%' },
-      });
-    });
-    if (label) {
-      gsap.set(label, { y: 10, opacity: 0 });
-      gsap.to(label, {
-        y: 0, opacity: 1, duration: 0.5, ease: 'power3.out',
-        scrollTrigger: { trigger: el, start: 'top 90%' },
-      });
-    }
-  });
-
-  /* ── Features stagger ── */
-  gsap.utils.toArray('.feature').forEach((card, i) => {
-    const dir = i % 2 === 0 ? -20 : 20;
-    gsap.set(card, { x: dir, y: 20, opacity: 0 });
-    gsap.to(card, {
-      x: 0, y: 0, opacity: 1, duration: 0.7, ease: 'power4.out',
-      scrollTrigger: { trigger: card, start: 'top 88%' },
-    });
   });
 
   /* ── Feature card tilt on hover ── */
@@ -80,41 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     card.addEventListener('mouseleave', () => {
       gsap.to(card, { rotationX: 0, rotationY: 0, duration: 0.4, ease: 'power2.out' });
-    });
-  });
-
-  /* ── Steps stagger ── */
-  gsap.utils.toArray('.step').forEach((step) => {
-    gsap.set(step, { x: -20, opacity: 0 });
-    gsap.to(step, {
-      x: 0, opacity: 1, duration: 0.7, ease: 'power4.out',
-      scrollTrigger: { trigger: step, start: 'top 88%' },
-    });
-  });
-
-  /* ── FAQ stagger ── */
-  gsap.utils.toArray('.faq-item').forEach((item, i) => {
-    const dx = i % 2 === 0 ? -20 : 20;
-    gsap.set(item, { x: dx, opacity: 0 });
-    gsap.to(item, {
-      x: 0, opacity: 1, duration: 0.5, ease: 'power4.out',
-      scrollTrigger: { trigger: item, start: 'top 88%' },
-    });
-  });
-
-  /* ── Trust bar ── */
-
-  /* ── CTA reveal ── */
-  gsap.set('.cta-box', { y: 50, opacity: 0 });
-  gsap.to('.cta-box', {
-    y: 0, opacity: 1, duration: 0.8, ease: 'power4.out',
-    scrollTrigger: { trigger: '.cta-box', start: 'top 80%' },
-  });
-  gsap.utils.toArray('.cta-form .input-group').forEach((el, i) => {
-    gsap.set(el, { y: 20, opacity: 0 });
-    gsap.to(el, {
-      y: 0, opacity: 1, duration: 0.5, ease: 'power3.out',
-      scrollTrigger: { trigger: '.cta-box', start: 'top 75%' },
     });
   });
 
@@ -135,18 +62,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const toggle = document.getElementById('navToggle');
   const links = document.getElementById('navLinks');
   if (toggle && links) {
-    gsap.set('.nav-links a', { x: 20, opacity: 0 });
     toggle.addEventListener('click', () => {
       const open = links.classList.toggle('open');
       toggle.classList.toggle('open');
       toggle.setAttribute('aria-expanded', open);
       toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
       document.body.style.overflow = open ? 'hidden' : '';
-      if (open) {
-        gsap.to('.nav-links a', { x: 0, opacity: 1, duration: 0.4, stagger: 0.05, ease: 'power3.out' });
-      } else {
-        gsap.set('.nav-links a', { x: 20, opacity: 0 });
-      }
     });
     links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
       links.classList.remove('open');
@@ -154,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
       toggle.setAttribute('aria-expanded', 'false');
       toggle.setAttribute('aria-label', 'Abrir menú');
       document.body.style.overflow = '';
-      gsap.set('.nav-links a', { x: 20, opacity: 0 });
     }));
   }
 
