@@ -97,20 +97,9 @@ document.addEventListener('DOMContentLoaded', () => {
     defaults: { ease: 'power3.out' },
   });
   statsTl
-    .from('.stat-card', { y: 40, opacity: 0, duration: 0.5, stagger: 0.08 })
-    .from('.stat-plus, .stat-pct, .stat-min', { opacity: 0, scale: 0, duration: 0.3, stagger: 0.1 }, '-=0.2');
+    .from('.stat-card', { y: 40, opacity: 0, duration: 0.5, stagger: 0.08 });
 
-  /* ── Counters with dramatic reveal ── */
-  document.querySelectorAll('[data-count]').forEach(el => {
-    const target = parseInt(el.dataset.count);
-    if (!target) return;
-    const obj = { val: 0 };
-    gsap.to(obj, {
-      val: target, duration: 2.2, ease: 'power2.out',
-      scrollTrigger: { trigger: el.closest('.stat-card') || el, start: 'top 85%' },
-      onUpdate: () => { el.textContent = Math.floor(obj.val).toLocaleString(); },
-    });
-  });
+  /* ── Counters (blank until real data) ── */
 
   /* ── Section head reveals ── */
   gsap.utils.toArray('.section-head').forEach(el => {

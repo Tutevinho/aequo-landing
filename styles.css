@@ -188,6 +188,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .stat-plus, .stat-pct, .stat-min {
   font-size: 1.2rem; opacity: 0.4; font-weight: 400;
 }
+.stat-blank { opacity: 0.2; font-weight: 300; }
 .stat-label-lg {
   font-size: 0.82rem; color: var(--text-dim); margin-top: 10px;
   letter-spacing: 0.02em;
